@@ -2,9 +2,21 @@ package com.mscourse.hrworker.domain.worker.entity;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.mscourse.hrworker.application.worker.dto.WorkerDto;
+
 @SuppressWarnings("serial")
+@Entity
+@Table(name = "TB_WORKER")
 public class Worker implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String name;
     private Double dailyIncome;
@@ -34,6 +46,14 @@ public class Worker implements Serializable {
     }
     public void setDailyIncome(Double dailyIncome) {
         this.dailyIncome = dailyIncome;
+    }
+
+    public WorkerDto toDto() {
+        WorkerDto dto = new WorkerDto();
+        dto.setId(this.id);
+        dto.setName(this.name);
+        dto.setDailyIncome(this.dailyIncome);
+        return dto;
     }
 
     @Override

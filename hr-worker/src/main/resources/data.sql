@@ -1,5 +1,7 @@
+DROP TABLE tb_worker;
+
 CREATE TABLE tb_worker (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id SERIAL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     daily_Income NUMERIC(20,1)
 );
