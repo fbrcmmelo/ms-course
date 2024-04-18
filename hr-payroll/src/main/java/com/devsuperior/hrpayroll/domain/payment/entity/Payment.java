@@ -9,8 +9,9 @@ public class Payment implements Serializable {
     private Double income;
     private Integer days;
 
-    public Payment() {}
-    
+    public Payment() {
+    }
+
     public Payment(String name, Double income, Integer days) {
         this.name = name;
         this.income = income;
@@ -20,14 +21,13 @@ public class Payment implements Serializable {
     public String getName() {
         return name;
     }
+
     public Double getIncome() {
         return income;
     }
+
     public Integer getDays() {
         return days;
-    }
-    public Double getTotal() {
-        return days * income;
     }
 
     @Override
@@ -71,5 +71,5 @@ public class Payment implements Serializable {
     public String toString() {
         return "Payment [name=" + name + ", income=" + income + ", days=" + days + "]";
     }
-    
+
 }

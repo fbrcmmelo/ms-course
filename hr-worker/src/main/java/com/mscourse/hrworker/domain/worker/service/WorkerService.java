@@ -1,6 +1,5 @@
 package com.mscourse.hrworker.domain.worker.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mscourse.hrworker.domain.worker.entity.Worker;
@@ -9,10 +8,9 @@ import com.mscourse.hrworker.infrasctructure.worker.repository.WorkerRepository;
 
 @Service
 public class WorkerService {
-    
+
     private final WorkerRepository repository;
 
-    @Autowired
     public WorkerService(WorkerRepository repository) {
         this.repository = repository;
     }

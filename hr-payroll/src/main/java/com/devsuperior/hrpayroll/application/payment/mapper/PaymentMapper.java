@@ -7,7 +7,7 @@ import com.devsuperior.hrpayroll.domain.payment.entity.Payment;
 
 @Component
 public class PaymentMapper {
-    
+
     public PaymentDTO toDTO(Payment entity) {
         PaymentDTO dto = new PaymentDTO();
         dto.setName(entity.getName());

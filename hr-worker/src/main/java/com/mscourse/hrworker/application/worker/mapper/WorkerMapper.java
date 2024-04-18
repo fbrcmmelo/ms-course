@@ -7,7 +7,7 @@ import com.mscourse.hrworker.domain.worker.entity.Worker;
 
 @Component
 public class WorkerMapper {
-    
+
     public WorkerDto toDTO(Worker entity) {
         WorkerDto dto = new WorkerDto();
         dto.setId(entity.getId());

@@ -8,8 +8,8 @@ import com.mscourse.hrworker.domain.worker.exception.WorkerNotFoundException;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
-    
-    @ExceptionHandler({WorkerNotFoundException.class})
+
+    @ExceptionHandler({ WorkerNotFoundException.class })
     public Error handleWorkerNotFoundException(WorkerNotFoundException exception) {
         return new Error(exception.getMessage(), 404, HttpStatus.NOT_FOUND);
     }
