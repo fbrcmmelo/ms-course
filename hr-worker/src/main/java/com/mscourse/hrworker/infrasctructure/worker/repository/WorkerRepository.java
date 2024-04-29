@@ -7,5 +7,5 @@ import com.mscourse.hrworker.domain.worker.entity.Worker;
 
 @Repository
 public interface WorkerRepository extends JpaRepository<Worker, Integer> {
-    
+
 }
