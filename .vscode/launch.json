@@ -1,24 +1,34 @@
 {
-    "configurations": [
-        {
-            "type": "java",
-            "name": "Spring Boot-HrWorkerApplication<hr-worker>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.mscourse.hrworker.HrWorkerApplication",
-            "projectName": "hr-worker",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        },
-        {
-            "type": "java",
-            "name": "Spring Boot-HrPayrollApplication<hr-payroll>",
-            "request": "launch",
-            "cwd": "${workspaceFolder}",
-            "mainClass": "com.devsuperior.hrpayroll.HrPayrollApplication",
-            "projectName": "hr-payroll",
-            "args": "",
-            "envFile": "${workspaceFolder}/.env"
-        }
-    ]
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-HrWorkerApplication<hr-worker>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.mscourse.hrworker.HrWorkerApplication",
+      "projectName": "hr-worker",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-HrPayrollApplication<hr-payroll>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.devsuperior.hrpayroll.HrPayrollApplication",
+      "projectName": "hr-payroll",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-HrEurekaServerApplication<hr-eureka-server>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.devsuperior.hreurekaserver.HrEurekaServerApplication",
+      "projectName": "hr-eureka-server",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
 }

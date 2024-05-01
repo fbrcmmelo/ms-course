@@ -12,24 +12,32 @@ import org.springframework.web.bind.annotation.RestController;
 import com.devsuperior.hrpayroll.application.payment.dto.PaymentDTO;
 import com.devsuperior.hrpayroll.application.payment.mapper.PaymentMapper;
 import com.devsuperior.hrpayroll.domain.payment.service.GetWorkerPayment;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 @RequestMapping(value = "/payments", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PaymentController {
 
-    private final GetWorkerPayment service;
-    private final PaymentMapper mapper;
+	private final GetWorkerPayment service;
+	private final PaymentMapper mapper;
 
-    private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
+	private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
 
-    public PaymentController(GetWorkerPayment service, PaymentMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
+	public PaymentController(GetWorkerPayment service, PaymentMapper mapper) {
+		this.service = service;
+		this.mapper = mapper;
+	}
 
-    @GetMapping("workers/{workerId}/days/{days}")
-    public ResponseEntity<PaymentDTO> getPayment(@PathVariable Long workerId, @PathVariable Integer days) {
-        logger.info("Getting the employee's payment of worker of id: {} about: {} days.", workerId, days);
-        return ResponseEntity.ok(mapper.toDTO(service.getPayment(workerId, days)));
-    }
+	@HystrixCommand(fallbackMethod = "getPaymentWhenServiceIsOff")
+	@GetMapping("workers/{workerId}/days/{days}")
+	public ResponseEntity<PaymentDTO> getPayment(@PathVariable Long workerId, @PathVariable Integer days) {
+		logger.info("Getting the employee's payment of worker of id: {} about: {} days.", workerId, days);
+		return ResponseEntity.ok(mapper.toDTO(service.getPayment(workerId, days)));
+	}
+
+	public ResponseEntity<PaymentDTO> getPaymentWhenServiceIsOff(Long workerId, Integer days) {
+		logger.info("Getting offline service the employee's payment of worker of id: {} about: {} days.", workerId,
+				days);
+		return ResponseEntity.ok(new PaymentDTO("", days));
+	}
 }
