@@ -1,0 +1,35 @@
+#gateway entry port, for all microservices
+server:
+  port: 8765
+#registering at eureka server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+#defining gateway routes automatically by discovery eureka server, timeout
+spring:
+  application.name: hr-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 30s
+          
+#defining gateway routes manually 
+#spring:
+#  application.name: hr-gateway
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: hr-worker
+#          uri: lb://HR-WORKER
+#          predicates:
+#          - Path=/workers/**
+#        - id: hr-payroll
+#          uri: lb://HR-PAYROLL
+#          predicates:
+#          - Path=/payments/**
